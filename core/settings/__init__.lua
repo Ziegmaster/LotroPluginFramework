@@ -3,7 +3,6 @@
 ]]
 LPF.Settings = {
 	DEBUG = {
-		Enabled = true,
 		Lang = "EN",
 	},
 	Plugin = {

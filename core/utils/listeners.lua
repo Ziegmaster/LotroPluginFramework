@@ -1,30 +1,30 @@
 --[[
     Safely add a listener without overwriting any existing ones
 ]]
-function LPF.AddListener(object, event, listener)
+function LPF.AddEventListener(object, event, callback)
 	if object[event] == nil then
-		object[event] = listener
+		object[event] = callback
 	else
 		if type(object[event]) == "table" then
-			table.insert(object[event], listener)
+			table.insert(object[event], callback)
 		else
-			object[event] = { object[event], listener }
+			object[event] = { object[event], callback }
 		end
 	end
-	return listener
+	return callback
 end
 
 --[[
     Safely remove a listener without clobbering any extras
 ]]
-function LPF.RemoveListener(object, event, listener)
-	if object[event] == listener then
+function LPF.RemoveEventListener(object, event, callback)
+	if object[event] == callback then
 		object[event] = nil
 	else
 		if type(object[event]) == "table" then
 			local size = #object[event]
 			for i = 1, size do
-				if object[event][i] == listener then
+				if object[event][i] == callback then
 					table.remove(object[event], i)
 					break
 				end
@@ -36,7 +36,7 @@ end
 --[[
     Safely execute a listener whether it be an array of functions or a single one
 ]]
-function LPF.ExecuteListener(object, event, args)
+function LPF.ExecuteEventListener(object, event, args)
 	if type(object[event]) == "function" then
 		object[event](object, args)
 	else
