@@ -3,9 +3,9 @@
 ]]
 _G.LPF = {}
 
-import("LotroPluginFramework.core.utils")
-import("LotroPluginFramework.core.settings")
-import("LotroPluginFramework.core.lang")
+import("LotroPluginFramework.Core.Settings")
+import("LotroPluginFramework.Core.Texts")
+import("LotroPluginFramework.Core.Utils")
 
 --[[
     Starting point of the entire LotroPluginFramework
@@ -16,7 +16,7 @@ import("LotroPluginFramework.core.lang")
 		DEBUG: boolean
 	}
 ]]
-LPF.Init = function(args)
+LPF.InitPlugin = function(args)
 	if type(args) ~= "table" then
 		args = {}
 	end
@@ -25,6 +25,6 @@ LPF.Init = function(args)
 	LPF.DebugMessage(LPF.Texts.LPF_DEBUG.LPFGreeting)
 
 	LPF.AddEventListener(plugin, "Load", function()
-		LPF.DebugMessage(LPF.Texts.LPF_DEBUG.PluginLoad)
+		LPF.DebugMessage(LPF.Texts.LPF_DEBUG.PluginLoaded(LPF.Settings.Plugin.Name))
 	end)
 end

@@ -1,1 +1,0 @@
-import("LotroPluginFramework.core")
