@@ -6,3 +6,7 @@ LPF.Texts.LPF_DEBUG = {
 		'" has been loaded!',
 	},
 }
+
+LPF.Texts.LPF_Modules = {
+	Parser = "Parser",
+}
