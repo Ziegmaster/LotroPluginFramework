@@ -4,9 +4,8 @@
   <Name>HelloWorld</Name>
   <Author>LPF</Author>
   <Version>1.0.0</Version>
-  <Description>Hello World!
-  </Description>
+  <Description>Hello World!</Description>
  </Information>
  <Package>LPFHelloWorld.Main</Package>
- <Configuration Apartment="LPFHelloWorld" />
+ <Configuration Apartment="LPFHelloWorld"/>
 </Plugin>
