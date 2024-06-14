@@ -1,3 +1,5 @@
-import("LotroPluginFramework.Core.Utils.Debug")
-import("LotroPluginFramework.Core.Utils.Module")
-import("LotroPluginFramework.Core.Utils.Listeners")
+import("LotroPluginFramework.Core.Utils.Table")
+import("LotroPluginFramework.Core.Utils.Shell")
+import("LotroPluginFramework.Core.Utils.Events")
+import("LotroPluginFramework.Core.Utils.PluginData")
+import("LotroPluginFramework.Core.Utils.LoadModule")
