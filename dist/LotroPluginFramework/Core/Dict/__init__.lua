@@ -1,5 +1,12 @@
 LPF.Dict = {
-	ModuleImports = {
+	VERSION = "0.1.0",
+	Locales = {
+		EN = "EN",
+		DE = "DE",
+		FR = "FR",
+		RU = "RU"
+	},
+	Modules = {
 		Parser = "Parser",
 		UI = "UI",
 	},

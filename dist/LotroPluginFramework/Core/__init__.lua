@@ -24,7 +24,7 @@ LPF.InitPlugin = function(args)
 
 	LPF.Debug = not (args.Debug == false)
 
-	LPF.Shell.DebugMessage(LPF.Shell.ColorizeText(LPF.Texts.LPF_Debug.LPFGreeting, LPF.Dict.ShellColors.Amber))
+	LPF.Shell.DebugMessage(LPF.Shell.ColorizeText(LPF.Texts.Debug.LPFGreeting, LPF.Dict.ShellColors.Amber))
 
 	if args.PluginData and type(args.PluginData) == "table" and args.PluginData.Enabled == true then
 		if args.PluginData.DataScope == nil then
@@ -32,11 +32,11 @@ LPF.InitPlugin = function(args)
 			if LPF.Settings.PluginData == nil then
 				LPF.Settings.PluginData = LPF.Settings.PluginDataDefaults
 				LPF.Shell.DebugMessage(
-					LPF.Shell.ColorizeText(LPF.Texts.LPF_Debug.PluginDataCreated, LPF.Dict.ShellColors.Green)
+					LPF.Shell.ColorizeText(LPF.Texts.Debug.PluginDataCreated, LPF.Dict.ShellColors.Green)
 				)
 			else
 				LPF.Shell.DebugMessage(
-					LPF.Shell.ColorizeText(LPF.Texts.LPF_Debug.PluginDataLoaded, LPF.Dict.ShellColors.Green)
+					LPF.Shell.ColorizeText(LPF.Texts.Debug.PluginDataLoaded, LPF.Dict.ShellColors.Green)
 				)
 			end
 		else
@@ -44,11 +44,11 @@ LPF.InitPlugin = function(args)
 				LPF.Settings.PluginData = LPF.PluginData.Load(args.PluginData.DataScope, "")
 				if LPF.Settings.PluginData == nil then
 					LPF.Shell.DebugMessage(
-						LPF.Shell.ColorizeText(LPF.Texts.LPF_Debug.PluginDataCreated, LPF.Dict.ShellColors.Green)
+						LPF.Shell.ColorizeText(LPF.Texts.Debug.PluginDataCreated, LPF.Dict.ShellColors.Green)
 					)
 				else
 					LPF.Shell.DebugMessage(
-						LPF.Shell.ColorizeText(LPF.Texts.LPF_Debug.PluginDataLoaded, LPF.Dict.ShellColors.Green)
+						LPF.Shell.ColorizeText(LPF.Texts.Debug.PluginDataLoaded, LPF.Dict.ShellColors.Green)
 					)
 				end
 			else
@@ -58,7 +58,7 @@ LPF.InitPlugin = function(args)
 	end
 
 	LPF.Events.AddListener(plugin, "Load", function()
-		LPF.Shell.DebugMessage(LPF.Shell.ColorizeText(LPF.Texts.LPF_Debug.PluginLoaded, LPF.Dict.ShellColors.Green))
+		LPF.Shell.DebugMessage(LPF.Shell.ColorizeText(LPF.Texts.Debug.PluginLoaded, LPF.Dict.ShellColors.Green))
 	end)
 
 	LPF.Events.AddListener(plugin, "Unload", function()
@@ -66,7 +66,7 @@ LPF.InitPlugin = function(args)
 			LPF.Settings.PluginData = LPF.Settings.PluginDataDefaults
 		end
 		LPF.PluginData.Save(args.Settings.DataScope, "", LPF.Settings.PluginData)
-		LPF.Shell.DebugMessage(LPF.Shell.ColorizeText(LPF.Texts.LPF_Debug.PluginDataSaved, LPF.Dict.ShellColors.Green))
-		LPF.Shell.DebugMessage(LPF.Shell.ColorizeText(LPF.Texts.LPF_Debug.PluginUnloaded, LPF.Dict.ShellColors.Amber))
+		LPF.Shell.DebugMessage(LPF.Shell.ColorizeText(LPF.Texts.Debug.PluginDataSaved, LPF.Dict.ShellColors.Green))
+		LPF.Shell.DebugMessage(LPF.Shell.ColorizeText(LPF.Texts.Debug.PluginUnloaded, LPF.Dict.ShellColors.Amber))
 	end)
 end

@@ -1,1 +1,1 @@
-import("LotroPluginFramework.Core.Texts." .. LPF.Settings.Debug.Lang)
+import("LotroPluginFramework.Core.Texts." .. LPF.Settings.Debug.Locale)

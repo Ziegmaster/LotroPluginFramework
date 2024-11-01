@@ -55,8 +55,6 @@ LPF.PluginData = {
 		Turbine.PluginData.Save(
 			turbine_data_scope,
 			LPF.Settings.PluginDataDefaults.Name .. file_name_suffix,
-			---Should work as intended
-			---@diagnostic disable-next-line: param-type-mismatch
 			tableEncode(data_object),
 			function() end
 		)

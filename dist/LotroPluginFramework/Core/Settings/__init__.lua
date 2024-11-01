@@ -5,12 +5,12 @@ LPF.Settings = {
 	PluginDataDefaults = {
 		Name = plugin:GetName(),
 		Version = plugin:GetVersion(),
-		Lang = "EN",
+		Locale = LPF.Dict.Locales.EN,
 	},
 	PluginData = nil,
 	ResetToDefaults = false,
 	Debug = {
-		Lang = "EN",
+		Locale = LPF.Dict.Locales.EN,
 	},
 	ShellColors = {
 		PluginNameLabel = LPF.Dict.ShellColors.Platinum,
