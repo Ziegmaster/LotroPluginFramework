@@ -1,3 +1,6 @@
+--[[
+	Loads LPF Module
+]]
 LPF.LoadModule = function(module_name)
 	if LPF.Modules == nil then
 		import("LotroPluginFramework.Modules")

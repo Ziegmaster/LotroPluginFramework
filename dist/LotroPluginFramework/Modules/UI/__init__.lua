@@ -1,3 +1,6 @@
+import("Turbine.UI")
+import("Turbine.UI.Lotro")
+
 LPF.Modules.UI = {
 	Fonts = {
 		Common = {

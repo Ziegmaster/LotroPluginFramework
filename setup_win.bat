@@ -11,5 +11,11 @@ xcopy /s /q "%~dp0dist" %PLUGINS_FOLDER%
 @RD /S /Q  %PLUGINS_FOLDER%"\LPFHelloWorld"
 mkdir %PLUGINS_FOLDER%"\LPFHelloWorld"
 xcopy /s /q "%~dp0plugins\LPFHelloWorld" %PLUGINS_FOLDER%"\LPFHelloWorld"
+@RD /S /Q  %PLUGINS_FOLDER%"\LPFParser"
+mkdir %PLUGINS_FOLDER%"\LPFParser"
+xcopy /s /q "%~dp0plugins\LPFParser" %PLUGINS_FOLDER%"\LPFParser"
+@RD /S /Q  %PLUGINS_FOLDER%"\Exodia"
+mkdir %PLUGINS_FOLDER%"\Exodia"
+xcopy /s /q "%~dp0plugins\Exodia" %PLUGINS_FOLDER%"\Exodia"
 :: Uncomment pause if you want
 :: pause

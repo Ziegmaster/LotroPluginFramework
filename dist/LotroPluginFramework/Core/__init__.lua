@@ -1,7 +1,16 @@
 --[[
     Main LPF object.
 ]]
-_G.LPF = {}
+_G.LPF = {
+	--[[
+		Your plugin object.
+	]]
+	Plugin = plugin,
+	--[[
+		Your plugin variables accessible everywhere.
+	]]
+	PluginGlobals = {}
+}
 
 import("LotroPluginFramework.Core.Dict")
 import("LotroPluginFramework.Core.Settings")

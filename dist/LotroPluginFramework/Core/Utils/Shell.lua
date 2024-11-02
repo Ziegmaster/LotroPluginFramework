@@ -1,4 +1,8 @@
 LPF.Shell = {
+	CommonText = function (text)
+		Turbine.Shell.WriteLine(text)
+	end,
+
 	--[[
     	These messages will be displayed in debug mode only
 	]]

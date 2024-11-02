@@ -3,8 +3,8 @@
 ]]
 LPF.Settings = {
 	PluginDataDefaults = {
-		Name = plugin:GetName(),
-		Version = plugin:GetVersion(),
+		Name = LPF.Plugin:GetName(),
+		Version = LPF.Plugin:GetVersion(),
 		Locale = LPF.Dict.Locales.EN,
 	},
 	PluginData = nil,
