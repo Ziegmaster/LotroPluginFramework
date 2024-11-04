@@ -1,0 +1,1 @@
+import("Exodia.Parser." .. LPF.Settings.PluginData.Locale)

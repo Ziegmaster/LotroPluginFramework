@@ -1,4 +1,5 @@
+import("Turbine")
+import("Turbine.Class")
 import("Turbine.Gameplay")
 import("Turbine.Gameplay.Attributes")
-
 import("LotroPluginFramework.Core")

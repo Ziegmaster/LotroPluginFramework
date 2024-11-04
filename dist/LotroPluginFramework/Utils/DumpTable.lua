@@ -1,4 +1,4 @@
-LPF.DumpTable = function(node)
+function _G.DumpTable(node)
 	local cache, stack, output = {}, {}, {}
 	local depth = 1
 	local output_str = "{\n"

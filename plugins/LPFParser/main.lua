@@ -1,28 +1,34 @@
 -- Importing LPF
+
 import("LotroPluginFramework")
 
 -- How to import modules
-LPF.LoadModule(LPF.Dict.Modules.Parser)
+
+LPF.PluginGlobals.Parser = LPF.Modules.Parser:Load()
 
 -- How to initialize the plugin
-LPF.InitPlugin({ Settings = {
-	Enabled = true,
+
+LPF:InitPlugin({ PluginData = {
+	Enabled = false,
 	DataScope = Turbine.DataScope.Account,
 }, Debug = true })
 
--- How to add callbacks to the parser
+-- How to add parse functions
 
-LPF.Modules.Parser.AddParseFunction(Turbine.ChatType.PlayerCombat, "OUT", function (sender, args)
+LPF.PluginGlobals.Parser:AddParseFunction(Turbine.ChatType.PlayerCombat, "Player", function (sender, args)
     LPF.Shell.CommonText(args.Message)
 end)
 
-LPF.Modules.Parser.AddParseFunction(Turbine.ChatType.EnemyCombat, "IN", function (sender, args)
+LPF.PluginGlobals.Parser:AddParseFunction(Turbine.ChatType.EnemyCombat, "Enemy", function (sender, args)
     LPF.Shell.CommonText(args.Message)
 end)
 
--- How to remove callbacks
+import("LotroPluginFramework.Utils.DumpTable")
+LPF.Shell.DebugMessage(DumpTable(LPF.PluginGlobals.Parser.ParseFunctions))
 
-LPF.Modules.Parser.RemoveParseFunction(Turbine.ChatType.PlayerCombat, "OUT")
-LPF.Modules.Parser.RemoveParseFunction(Turbine.ChatType.EnemyCombat, "IN")
+-- How to remove parse functions
 
-LPF.Shell.DebugMessage(LPF.DumpTable(LPF.Modules.Parser.ParseFunctions))
+LPF.PluginGlobals.Parser:RemoveParseFunction(Turbine.ChatType.PlayerCombat, "Player")
+LPF.PluginGlobals.Parser:RemoveParseFunction(Turbine.ChatType.EnemyCombat, "Enemy")
+
+LPF.Shell.DebugMessage(DumpTable(LPF.PluginGlobals.Parser.ParseFunctions))

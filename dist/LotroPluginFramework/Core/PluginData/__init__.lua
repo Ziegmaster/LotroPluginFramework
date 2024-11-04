@@ -42,21 +42,24 @@ local function tableDecode(tbl)
 	end
 end
 
-LPF.PluginData = {
-	Load = function(turbine_data_scope, file_name_suffix)
-		local data = Turbine.PluginData.Load(
-			turbine_data_scope,
-			LPF.Settings.PluginDataDefaults.Name .. file_name_suffix,
-			function() end
-		)
-		return tableDecode(data)
-	end,
-	Save = function(turbine_data_scope, file_name_suffix, data_object)
-		Turbine.PluginData.Save(
-			turbine_data_scope,
-			LPF.Settings.PluginDataDefaults.Name .. file_name_suffix,
-			tableEncode(data_object),
-			function() end
-		)
-	end,
-}
+LPFClasses.LPFPluginData = _G.class()
+
+function LPFClasses.LPFPluginData:Constructor(lpf)
+    function LPFClasses.LPFPluginData:Load(turbine_data_scope, file_name_suffix)
+        local data = Turbine.PluginData.Load(
+            turbine_data_scope,
+            lpf.Settings.PluginDataDefaults.Name .. file_name_suffix,
+            function() end
+        )
+        return tableDecode(data)
+    end
+    
+    function LPFClasses.LPFPluginData:Save(turbine_data_scope, file_name_suffix, data_object)
+        Turbine.PluginData.Save(
+            turbine_data_scope,
+            lpf.Settings.PluginDataDefaults.Name .. file_name_suffix,
+            tableEncode(data_object),
+            function() end
+        )
+    end
+end
