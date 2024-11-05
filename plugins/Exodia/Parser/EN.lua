@@ -1,4 +1,4 @@
-LPF.PluginGlobals.Parser:AddParseFunction(Turbine.ChatType.PlayerCombat, "Player", function (sender, args)
+LPF.M.Parser:AddParseFunction(Turbine.ChatType.PlayerCombat, "Player", function (sender, args)
     if LPF.PluginGlobals.ActiveSession == nil and LPF.PluginGlobals.Player:IsInCombat() then
         LPF.PluginGlobals.StartSession()
     end
@@ -121,6 +121,6 @@ LPF.PluginGlobals.Parser:AddParseFunction(Turbine.ChatType.PlayerCombat, "Player
     end
 end)
 
-LPF.PluginGlobals.Parser:AddParseFunction(Turbine.ChatType.EnemyCombat, "Enemy", function (sender, args)
+LPF.M.Parser:AddParseFunction(Turbine.ChatType.EnemyCombat, "Enemy", function (sender, args)
     LPF.Shell:CommonText(args.Message)
 end)
