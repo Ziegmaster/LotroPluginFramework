@@ -26,6 +26,10 @@ function LPFClasses.LotroPluginFramework:Load()
 		Your plugin variables accessible everywhere.
 	]]
 	self.PluginGlobals = {}
+	--[[
+		It's recommended to load modules into this object.
+	]]
+	self.M = {}
 	self.Utils = LPFClasses.Utils:Constructor()
 	self.Dict = LPFClasses.Dict:Constructor()
 	--[[
