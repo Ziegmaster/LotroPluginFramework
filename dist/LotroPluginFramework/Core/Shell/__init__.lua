@@ -1,41 +1,41 @@
-LPFClasses.LPFShell = _G.class()
+LPFClasses.Shell = class()
 
-function LPFClasses.LPFShell:Constructor(lpf)
-    return {
-        CommonText = function (text)
-            Turbine.Shell.WriteLine(text)
-        end,
+function LPFClasses.Shell:Constructor()
+    return self
+end
 
-        --[[
-            These messages will be displayed in debug mode only
-        ]]
-        DebugMessage = function(text)
-            if lpf.Debug == true then
-                Turbine.Shell.WriteLine(
-                    lpf.Shell.ColorizeText(
-                        "[" .. lpf.Settings.PluginDefaults.Name .. "] ",
-                        lpf.Settings.ShellColors.PluginNameLabel
-                    )
-                        .. lpf.Shell.ColorizeText("[DEBUG]: ", lpf.Settings.ShellColors.DebugMark)
-                        .. lpf.Shell.ColorizeText(text, lpf.Settings.ShellColors.DebugText)
-                )
-            end
-        end,
-    
-        Error = function(text, level)
-            error(
-                lpf.Shell.ColorizeText(
-                    "[" .. lpf.Settings.PluginDefaults.Name .. "] ",
-                    lpf.Settings.ShellColors.PluginNameLabel
-                )
-                    .. lpf.Shell.ColorizeText("[ERROR]: ", lpf.Settings.ShellColors.ErrorMark)
-                    .. lpf.Shell.ColorizeText(text, lpf.Settings.ShellColors.ErrorText),
-                level
+function LPFClasses.Shell:CommonText(text)
+    Turbine.Shell.WriteLine(text)
+end
+
+--[[
+    These messages will be displayed in debug mode only
+]]
+function LPFClasses.Shell:DebugMessage(text)
+    if LPF.Debug == true then
+        Turbine.Shell.WriteLine(
+            LPF.Shell:ColorizeText(
+                "[" .. LPF.Settings.PluginDefaults.Name .. "] ",
+                LPF.Settings.ShellColors.PluginNameLabel
             )
-        end,
-    
-        ColorizeText = function(text, color)
-            return "<rgb=" .. color .. ">" .. text .. "</rgb>"
-        end,
-    }
+                .. LPF.Shell:ColorizeText("[DEBUG]: ", LPF.Settings.ShellColors.DebugMark)
+                .. LPF.Shell:ColorizeText(text, LPF.Settings.ShellColors.DebugText)
+        )
+    end
+end
+
+function LPFClasses.Shell:Error(text, level)
+    error(
+        LPF.Shell:ColorizeText(
+            "[" .. LPF.Settings.PluginDefaults.Name .. "] ",
+            LPF.Settings.ShellColors.PluginNameLabel
+        )
+            .. LPF.Shell:ColorizeText("[ERROR]: ", LPF.Settings.ShellColors.ErrorMark)
+            .. LPF.Shell:ColorizeText(text, LPF.Settings.ShellColors.ErrorText),
+        level
+    )
+end
+
+function LPFClasses.Shell:ColorizeText(text, color)
+    return "<rgb=" .. color .. ">" .. text .. "</rgb>"
 end

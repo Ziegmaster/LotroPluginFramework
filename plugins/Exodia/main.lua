@@ -1,12 +1,11 @@
 import("LotroPluginFramework")
-import("LotroPluginFramework.Utils.DumpTable")
 
 LPF:InitPlugin({ PluginData = {
 	Enabled = false,
 	DataScope = Turbine.DataScope.Account,
 }, Debug = true })
 
-LPF.PluginGlobals.Parser = LPF.Modules.Parser:Load()
+import("Exodia.Parser")
 
 LPF.PluginGlobals.Player = Turbine.Gameplay.LocalPlayer:GetInstance()
 LPF.PluginGlobals.ActiveSession = nil
@@ -24,24 +23,31 @@ LPF.PluginGlobals.StartSession = function ()
         ActionsDone = 0,
         AttacksDone = 0,
         AttacksTaken = 0,
+        PlayerAvoids = 0,
+        PlayerPartialAvoids = 0,
+        PlayerParries = 0,
+        PlayerPartialParries = 0,
+        PlayerBlocks = 0,
+        PlayerPartialBlocks = 0,
+        PlayerResists = 0,
         DamageDoneLog = {},
         DamageTakenLog = {},
         HealingDoneLog = {},
         HealingTakenLog = {},
         BubbleDoneLog = {},
         BubbleTakenLog = {},
-        SelfBPEMRLog = {},
-        TargetBPEMRLog = {},
+        PlayerAvoidLog = {},
+        TargetAvoidLog = {},
         DefeatLog = {},
         EventLog = {},
     }
 end
 
-LPF.Events.AddListener(LPF.PluginGlobals.Player, "InCombatChanged", function (sender, args)
+LPF.Events:AddListener(LPF.PluginGlobals.Player, "InCombatChanged", function (sender, args)
     if LPF.PluginGlobals.Player:IsInCombat() then
         LPF.PluginGlobals.StartSession()
     else
         LPF.PluginGlobals.ActiveSession.EndedAt = Turbine.Engine:GetGameTime()
-        LPF.Shell.DebugMessage(DumpTable(LPF.PluginGlobals.ActiveSession))
+        LPF.Shell:DebugMessage(LPF.Utils:DumpTable(LPF.PluginGlobals.ActiveSession))
     end
 end)

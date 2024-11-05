@@ -1,6 +1,6 @@
-LPFClasses.LPFSettings = _G.class()
+LPFClasses.Settings = class()
 
-function LPFClasses.LPFSettings:Constructor(lpf)
+function LPFClasses.Settings:Constructor()
 	return {
 		--[[
 			Flag for plugin creators.
@@ -11,20 +11,20 @@ function LPFClasses.LPFSettings:Constructor(lpf)
 		ResetToDefaults = false,
 		Plugin = nil,
 		PluginDefaults = {
-			Name = lpf.Plugin:GetName(),
-			Version = lpf.Plugin:GetVersion(),
-			Locale = lpf.Dict.Locales.EN,
+			Name = LPF.Plugin:GetName(),
+			Version = LPF.Plugin:GetVersion(),
+			Locale = LPF.Dict.Locales.EN,
 		},
 		Debug = {
-			Locale = lpf.Dict.Locales.EN,
+			Locale = LPF.Dict.Locales.EN,
 		},
 		ShellColors = {
-			PluginNameLabel = lpf.Dict.ShellColors.Platinum,
-			DefaultText = lpf.Dict.ShellColors.Platinum,
-			DebugMark = lpf.Dict.ShellColors.Azure,
-			DebugText = lpf.Dict.ShellColors.Platinum,
-			ErrorMark = lpf.Dict.ShellColors.Red,
-			ErrorText = lpf.Dict.ShellColors.Amber,
+			PluginNameLabel = LPF.Dict.ShellColors.Platinum,
+			DefaultText = LPF.Dict.ShellColors.Platinum,
+			DebugMark = LPF.Dict.ShellColors.Azure,
+			DebugText = LPF.Dict.ShellColors.Platinum,
+			ErrorMark = LPF.Dict.ShellColors.Red,
+			ErrorText = LPF.Dict.ShellColors.Amber,
 		},
 	}
 end

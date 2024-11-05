@@ -1,8 +1,8 @@
-LPFClasses.LPFModules.Parser = _G.class()
+LPFClasses.Modules.Parser = class()
 
-function LPFClasses.LPFModules.Parser:Constructor(lpf)
+function LPFClasses.Modules.Parser:Constructor()
     self.ParseFunctions = {}
-    self.Receiver = lpf.Events.AddListener(Turbine.Chat, "Received", function (sender, args)
+    self.Receiver = LPF.Events:AddListener(Turbine.Chat, "Received", function (sender, args)
         if type(self.ParseFunctions[args.ChatType]) ~= "table" then return end
         for chat_type_name, parse_func in pairs(self.ParseFunctions[args.ChatType]) do
             parse_func(sender, args)
@@ -11,7 +11,7 @@ function LPFClasses.LPFModules.Parser:Constructor(lpf)
     return self
 end
 
-function LPFClasses.LPFModules.Parser:AddParseFunction(chat_type, func_name, func)
+function LPFClasses.Modules.Parser:AddParseFunction(chat_type, func_name, func)
     if type(self.ParseFunctions[chat_type]) ~= "table" then
         self.ParseFunctions[chat_type] = {}
     end
@@ -21,6 +21,6 @@ end
 --[[
     Remove a function from the array by its name.
 ]]
-function LPFClasses.LPFModules.Parser:RemoveParseFunction(chat_type, func_name)
+function LPFClasses.Modules.Parser:RemoveParseFunction(chat_type, func_name)
     self.ParseFunctions[chat_type][func_name] = nil
 end

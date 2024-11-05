@@ -1,4 +1,4 @@
-LPF.Modules.Parser.AddParseFunction(Turbine.ChatType.PlayerCombat, "Player", function (sender, args)
+LPF.PluginGlobals.Parser:AddParseFunction(Turbine.ChatType.PlayerCombat, "Player", function (sender, args)
     if LPF.PluginGlobals.ActiveSession == nil and LPF.PluginGlobals.Player:IsInCombat() then
         LPF.PluginGlobals.StartSession()
     end
@@ -66,7 +66,7 @@ LPF.Modules.Parser.AddParseFunction(Turbine.ChatType.PlayerCombat, "Player", fun
             target_name = string.sub(target_name, 5)
         end
         if attacker_name == LPF.PluginGlobals.Player:GetName() then
-            table.insert(LPF.PluginGlobals.ActiveSession.TargetBPEMRLog, {
+            table.insert(LPF.PluginGlobals.ActiveSession.TargetAvoidLog, {
                 Time = time,
                 AttackerName = attacker_name,
                 SkillName = skill_name,
@@ -76,7 +76,7 @@ LPF.Modules.Parser.AddParseFunction(Turbine.ChatType.PlayerCombat, "Player", fun
             LPF.PluginGlobals.ActiveSession.ActionsDone = LPF.PluginGlobals.ActiveSession.ActionsDone + 1
             LPF.PluginGlobals.ActiveSession.AttacksDone = LPF.PluginGlobals.ActiveSession.AttacksDone + 1
         else
-            table.insert(LPF.PluginGlobals.ActiveSession.SelfBPEMRLog, {
+            table.insert(LPF.PluginGlobals.ActiveSession.PlayerAvoidLog, {
                 Time = time,
                 AttackerName = attacker_name,
                 SkillName = skill_name,
@@ -98,7 +98,7 @@ LPF.Modules.Parser.AddParseFunction(Turbine.ChatType.PlayerCombat, "Player", fun
             target_name = string.sub(target_name, 5)
         end
         if attacker_name == LPF.PluginGlobals.Player:GetName() then
-            table.insert(LPF.PluginGlobals.ActiveSession.TargetBPEMRLog, {
+            table.insert(LPF.PluginGlobals.ActiveSession.TargetAvoidLog, {
                 Time = time,
                 AttackerName = attacker_name,
                 SkillName = skill_name,
@@ -108,7 +108,7 @@ LPF.Modules.Parser.AddParseFunction(Turbine.ChatType.PlayerCombat, "Player", fun
             LPF.PluginGlobals.ActiveSession.ActionsDone = LPF.PluginGlobals.ActiveSession.ActionsDone + 1
             LPF.PluginGlobals.ActiveSession.AttacksDone = LPF.PluginGlobals.ActiveSession.AttacksDone + 1
         else
-            table.insert(LPF.PluginGlobals.ActiveSession.SelfBPEMRLog, {
+            table.insert(LPF.PluginGlobals.ActiveSession.PlayerAvoidLog, {
                 Time = time,
                 AttackerName = attacker_name,
                 SkillName = skill_name,
@@ -121,6 +121,6 @@ LPF.Modules.Parser.AddParseFunction(Turbine.ChatType.PlayerCombat, "Player", fun
     end
 end)
 
-LPF.Modules.Parser.AddParseFunction(Turbine.ChatType.EnemyCombat, "Enemy", function (sender, args)
-    LPF.Shell.CommonText(args.Message)
+LPF.PluginGlobals.Parser:AddParseFunction(Turbine.ChatType.EnemyCombat, "Enemy", function (sender, args)
+    LPF.Shell:CommonText(args.Message)
 end)

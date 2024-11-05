@@ -1,6 +1,6 @@
-LPFClasses.LPFDict = _G.class()
+LPFClasses.Dict = class()
 
-function LPFClasses.LPFDict:Constructor(lpf)
+function LPFClasses.Dict:Constructor()
 	return {
 		LPF_VERSION = "0.2.0",
 		Locales = {

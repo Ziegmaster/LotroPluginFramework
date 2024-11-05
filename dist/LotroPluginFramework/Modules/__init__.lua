@@ -1,9 +1,8 @@
-LPFClasses.LPFModules = {}
+LPFClasses.Modules = {}
 
-Module = _G.class()
+Module = class()
 
-function Module:Constructor(lpf, name, path)
-    self.LPF = lpf
+function Module:Constructor(name, path)
     self.Name = name
     self.Path = path
     return self
@@ -11,16 +10,16 @@ end
 
 function Module:Load()
     import(self.Path)
-    local module = LPFClasses.LPFModules[self.Name]:Constructor(self.LPF)
-    self.LPF.Shell.DebugMessage(self.LPF.Texts.Debug.ModuleLoaded(self.LPF.Texts.Debug.ModuleNames[self.Name]))
+    local module = LPFClasses.Modules[self.Name]:Constructor()
+    LPF.Shell:DebugMessage(LPF.Texts.Debug.ModuleLoaded(LPF.Texts.Debug.ModuleNames[self.Name]))
     return module
 end
 
-LPFClasses.LPFModuleDict = _G.class()
+LPFClasses.ModuleDict = class()
 
-function LPFClasses.LPFModuleDict:Constructor(lpf)
+function LPFClasses.ModuleDict:Constructor()
     return {
-        UI = Module:Constructor(lpf, "UI", "LotroPluginFramework.Modules.UI"),
-        Parser = Module:Constructor(lpf, "Parser", "LotroPluginFramework.Modules.Parser")
+        UI = Module:Constructor("UI", "LotroPluginFramework.Modules.UI"),
+        Parser = Module:Constructor("Parser", "LotroPluginFramework.Modules.Parser")
     }
 end
