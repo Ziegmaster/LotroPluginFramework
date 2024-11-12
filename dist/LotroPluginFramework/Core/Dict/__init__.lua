@@ -2,14 +2,7 @@ LPFClasses.Dict = class()
 
 function LPFClasses.Dict:Constructor()
 	return {
-		LPF_VERSION = "0.2.0",
-		Locales = {
-			EN = "EN",
-			DE = "DE",
-			FR = "FR",
-			RU = "RU"
-		},
-		ShellColors = {
+		HexColors = {
 			Red = "#ff0000",
 			Green = "#00ff00",
 			Blue = "#0000ff",

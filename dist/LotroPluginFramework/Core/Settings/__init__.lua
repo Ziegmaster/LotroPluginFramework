@@ -13,18 +13,18 @@ function LPFClasses.Settings:Constructor()
 		PluginDefaults = {
 			Name = LPF.Plugin:GetName(),
 			Version = LPF.Plugin:GetVersion(),
-			Locale = LPF.Dict.Locales.EN,
+			Locale = LPF_LOCALES.EN,
 		},
 		Debug = {
-			Locale = LPF.Dict.Locales.EN,
+			Locale = LPF_LOCALES.EN,
 		},
 		ShellColors = {
-			PluginNameLabel = LPF.Dict.ShellColors.Platinum,
-			DefaultText = LPF.Dict.ShellColors.Platinum,
-			DebugMark = LPF.Dict.ShellColors.Azure,
-			DebugText = LPF.Dict.ShellColors.Platinum,
-			ErrorMark = LPF.Dict.ShellColors.Red,
-			ErrorText = LPF.Dict.ShellColors.Amber,
+			PluginNameLabel = LPF.Dict.HexColors.Platinum,
+			DefaultText = LPF.Dict.HexColors.Platinum,
+			DebugMark = LPF.Dict.HexColors.Azure,
+			DebugText = LPF.Dict.HexColors.Platinum,
+			ErrorMark = LPF.Dict.HexColors.Red,
+			ErrorText = LPF.Dict.HexColors.Amber,
 		},
 	}
 end

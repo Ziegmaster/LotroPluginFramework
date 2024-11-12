@@ -10,14 +10,14 @@ function LPFClasses.LotroPluginFramework:Constructor()
 end
 
 function LPFClasses.LotroPluginFramework:Load()
-	import("LotroPluginFramework.Utils")
-	import("LotroPluginFramework.Core.Dict")
-	import("LotroPluginFramework.Core.Settings")
-	import("LotroPluginFramework.Core.Texts")
-	import("LotroPluginFramework.Core.Shell")
-	import("LotroPluginFramework.Core.Events")
-	import("LotroPluginFramework.Core.PluginData")
-	import("LotroPluginFramework.Modules")
+	import(LPF_VERSION_PATH("LotroPluginFramework.Utils"))
+	import(LPF_VERSION_PATH("LotroPluginFramework.Core.Dict"))
+	import(LPF_VERSION_PATH("LotroPluginFramework.Core.Settings"))
+	import(LPF_VERSION_PATH("LotroPluginFramework.Core.Texts"))
+	import(LPF_VERSION_PATH("LotroPluginFramework.Core.Shell"))
+	import(LPF_VERSION_PATH("LotroPluginFramework.Core.Events"))
+	import(LPF_VERSION_PATH("LotroPluginFramework.Core.PluginData"))
+	import(LPF_VERSION_PATH("LotroPluginFramework.Modules"))
 	--[[
 		Your plugin object.
 	]]
@@ -64,7 +64,8 @@ function LPFClasses.LotroPluginFramework:InitPlugin(init_args)
 
 	self.Debug = not (init_args.Debug == false)
 
-	self.Shell:DebugMessage(self.Shell:ColorizeText(self.Texts.Debug.LPFGreeting, self.Dict.ShellColors.Amber))
+	local startup_message = "LotroPluginFramework v" .. string.gsub(LPF_VERSION, "_", ".") .. " by Ziegmaster"
+	self.Shell:DebugMessage(self.Shell:ColorizeText(startup_message, self.Dict.HexColors.Amber))
 
 	if init_args.PluginData and type(init_args.PluginData) == "table" and init_args.PluginData.Enabled == true then
 		if init_args.PluginData.DataScope == nil then
@@ -73,11 +74,11 @@ function LPFClasses.LotroPluginFramework:InitPlugin(init_args)
 				self.Settings.FirstLaunch = true
 				self.Settings.Plugin = self.Settings.PluginDefaults
 				self.Shell:DebugMessage(
-					self.Shell:ColorizeText(self.Texts.Debug.PluginDataCreated, self.Dict.ShellColors.Green)
+					self.Shell:ColorizeText(self.Texts.Debug.PluginDataCreated, self.Dict.HexColors.Green)
 				)
 			else
 				self.Shell:DebugMessage(
-					self.Shell:ColorizeText(self.Texts.Debug.PluginDataLoaded, self.Dict.ShellColors.Green)
+					self.Shell:ColorizeText(self.Texts.Debug.PluginDataLoaded, self.Dict.HexColors.Green)
 				)
 			end
 		else
@@ -87,11 +88,11 @@ function LPFClasses.LotroPluginFramework:InitPlugin(init_args)
 					self.Settings.FirstLaunch = true
 					self.Settings.Plugin = self.Settings.PluginDefaults
 					self.Shell:DebugMessage(
-						self.Shell:ColorizeText(self.Texts.Debug.PluginDataCreated, self.Dict.ShellColors.Green)
+						self.Shell:ColorizeText(self.Texts.Debug.PluginDataCreated, self.Dict.HexColors.Green)
 					)
 				else
 					self.Shell:DebugMessage(
-						self.Shell:ColorizeText(self.Texts.Debug.PluginDataLoaded, self.Dict.ShellColors.Green)
+						self.Shell:ColorizeText(self.Texts.Debug.PluginDataLoaded, self.Dict.HexColors.Green)
 					)
 				end
 			else
@@ -100,10 +101,14 @@ function LPFClasses.LotroPluginFramework:InitPlugin(init_args)
 		end
 	else
 		self.Settings.Plugin = self.Settings.PluginDefaults
+		if init_args.DefaultLocale then
+			self.Settings.Debug.Locale = init_args.DefaultLocale
+			self.Settings.Plugin.Locale = init_args.DefaultLocale
+		end
 	end
 
 	self.Events:AddListener(plugin, "Load", function()
-		self.Shell:DebugMessage(self.Shell:ColorizeText(self.Texts.Debug.PluginLoaded, self.Dict.ShellColors.Green))
+		self.Shell:DebugMessage(self.Shell:ColorizeText(self.Texts.Debug.PluginLoaded, self.Dict.HexColors.Green))
 	end)
 
 	self.Events:AddListener(plugin, "Unload", function()
@@ -112,8 +117,8 @@ function LPFClasses.LotroPluginFramework:InitPlugin(init_args)
 				self.Settings.Plugin = self.Settings.PluginDefaults
 			end
 			self.PluginData:Save(init_args.PluginData.DataScope, "", self.Settings.Plugin)
-			self.Shell:DebugMessage(self.Shell:ColorizeText(self.Texts.Debug.PluginDataSaved, self.Dict.ShellColors.Green))
-			self.Shell:DebugMessage(self.Shell:ColorizeText(self.Texts.Debug.PluginUnloaded, self.Dict.ShellColors.Amber))
+			self.Shell:DebugMessage(self.Shell:ColorizeText(self.Texts.Debug.PluginDataSaved, self.Dict.HexColors.Green))
+			self.Shell:DebugMessage(self.Shell:ColorizeText(self.Texts.Debug.PluginUnloaded, self.Dict.HexColors.Amber))
 		end
 	end)
 end

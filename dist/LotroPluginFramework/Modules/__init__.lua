@@ -9,7 +9,7 @@ function Module:Constructor(name, path)
 end
 
 function Module:Load()
-    import(self.Path)
+    import(LPF_VERSION_PATH(self.Path))
     local module = LPFClasses.Modules[self.Name]:Constructor()
     LPF.Shell:DebugMessage(LPF.Texts.Debug.ModuleLoaded(LPF.Texts.Debug.ModuleNames[self.Name]))
     return module

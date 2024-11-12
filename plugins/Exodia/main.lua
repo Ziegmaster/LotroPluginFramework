@@ -1,9 +1,13 @@
-import("LotroPluginFramework")
+import("LotroPluginFramework.0_2_0")
 
-LPF:InitPlugin({ PluginData = {
-	Enabled = false,
-	DataScope = Turbine.DataScope.Account,
-}, Debug = true })
+LPF:InitPlugin({
+    PluginData = {
+	    Enabled = false,
+	    DataScope = Turbine.DataScope.Account,
+    },
+    Debug = true,
+    DefaultLocale = LPF_LOCALES.EN
+})
 
 import("Exodia.Parser")
 

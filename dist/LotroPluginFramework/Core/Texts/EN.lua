@@ -2,7 +2,6 @@ LPFClasses.DebugTexts = class()
 
 function LPFClasses.DebugTexts:Constructor()
 	return {
-		LPFGreeting = "Greetings from LotroPluginFramework v" .. LPF.Dict.LPF_VERSION .. "!",
 		PluginLoaded = "Plugin has been fully loaded!",
 		PluginUnloaded = "Plugin has been unloaded!",
 		PluginDataCreated = "Plugin data has been created.",
