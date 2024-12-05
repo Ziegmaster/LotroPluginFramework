@@ -1,18 +1,18 @@
-LPFClasses.Shell = class()
+__LPF_CLASSES__.Shell = class()
 
-function LPFClasses.Shell:Constructor()
+function __LPF_CLASSES__.Shell:Constructor()
     return self
 end
 
-function LPFClasses.Shell:CommonText(text)
+function __LPF_CLASSES__.Shell:CommonText(text)
     Turbine.Shell.WriteLine(text)
 end
 
 --[[
     These messages will be displayed in debug mode only
 ]]
-function LPFClasses.Shell:DebugMessage(text)
-    if LPF.Debug == true then
+function __LPF_CLASSES__.Shell:DebugMessage(text)
+    if LPF.__DEBUG__ == true then
         Turbine.Shell.WriteLine(
             LPF.Shell:ColorizeText(
                 "[" .. LPF.Settings.PluginDefaults.Name .. "] ",
@@ -24,7 +24,7 @@ function LPFClasses.Shell:DebugMessage(text)
     end
 end
 
-function LPFClasses.Shell:Error(text, level)
+function __LPF_CLASSES__.Shell:Error(text, level)
     error(
         LPF.Shell:ColorizeText(
             "[" .. LPF.Settings.PluginDefaults.Name .. "] ",
@@ -36,6 +36,6 @@ function LPFClasses.Shell:Error(text, level)
     )
 end
 
-function LPFClasses.Shell:ColorizeText(text, color)
+function __LPF_CLASSES__.Shell:ColorizeText(text, color)
     return "<rgb=" .. color .. ">" .. text .. "</rgb>"
 end

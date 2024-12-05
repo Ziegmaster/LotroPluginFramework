@@ -1,6 +1,6 @@
-LPFClasses.Settings = class()
+__LPF_CLASSES__.Settings = class()
 
-function LPFClasses.Settings:Constructor()
+function __LPF_CLASSES__.Settings:Constructor()
 	return {
 		--[[
 			Flag for plugin creators.
@@ -13,10 +13,7 @@ function LPFClasses.Settings:Constructor()
 		PluginDefaults = {
 			Name = LPF.Plugin:GetName(),
 			Version = LPF.Plugin:GetVersion(),
-			Locale = LPF_LOCALES.EN,
-		},
-		Debug = {
-			Locale = LPF_LOCALES.EN,
+			Locale = LPF.Dict.Locales.EN,
 		},
 		ShellColors = {
 			PluginNameLabel = LPF.Dict.HexColors.Platinum,

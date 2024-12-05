@@ -1,10 +1,10 @@
-LPFClasses.Utils = class()
+__LPF_CLASSES__.Utils = class()
 
-function LPFClasses.Utils:Constructor()
+function __LPF_CLASSES__.Utils:Constructor()
 	return self
 end
 
-function LPFClasses.Utils:DumpTable(node)
+function __LPF_CLASSES__.Utils:DumpTable(node)
 	local cache, stack, output = {}, {}, {}
 	local depth = 1
 	local output_str = "{\n"
@@ -82,7 +82,7 @@ function LPFClasses.Utils:DumpTable(node)
 	return output_str
 end
 
-function LPFClasses.Utils:TableEncode(tbl)
+function __LPF_CLASSES__.Utils:TableEncode(tbl)
 	if type(tbl) == "number" then
 		local text = tostring(tbl)
 
@@ -102,7 +102,7 @@ function LPFClasses.Utils:TableEncode(tbl)
 	end
 end
 
-function LPFClasses.Utils:TableDecode(tbl)
+function __LPF_CLASSES__.Utils:TableDecode(tbl)
 	if type(tbl) == "string" then
 		local prefix = string.sub(tbl, 1, 1)
 

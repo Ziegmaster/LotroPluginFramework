@@ -1,7 +1,13 @@
-LPFClasses.Dict = class()
+__LPF_CLASSES__.Dict = class()
 
-function LPFClasses.Dict:Constructor()
+function __LPF_CLASSES__.Dict:Constructor()
 	return {
+		Locales = {
+			EN = "EN",
+			DE = "DE",
+			FR = "FR",
+			RU = "RU",
+		},
 		HexColors = {
 			Red = "#ff0000",
 			Green = "#00ff00",

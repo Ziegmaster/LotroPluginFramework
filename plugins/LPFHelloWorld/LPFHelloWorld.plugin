@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Plugin>
  <Information>
-  <Name>HelloWorld</Name>
+  <Name>LPFHelloWorld</Name>
   <Author>LPF</Author>
   <Version>1.0.0</Version>
   <Description>Hello World!

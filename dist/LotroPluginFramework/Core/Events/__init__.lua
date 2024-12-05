@@ -1,13 +1,13 @@
-LPFClasses.Events = class()
+__LPF_CLASSES__.Events = class()
 
-function LPFClasses.Events:Constructor()
+function __LPF_CLASSES__.Events:Constructor()
     return self
 end
 
 --[[
     Safely add a listener without overwriting any existing ones
 ]]
-function LPFClasses.Events:AddListener(object, event, callback)
+function __LPF_CLASSES__.Events:AddListener(object, event, callback)
     if object[event] == nil then
         object[event] = callback
     else
@@ -23,7 +23,7 @@ end
 --[[
     Safely remove a listener without clobbering any extras
 ]]
-function LPFClasses.Events:RemoveListener(object, event, callback)
+function __LPF_CLASSES__.Events:RemoveListener(object, event, callback)
     if object[event] == callback then
         object[event] = nil
     else
@@ -42,7 +42,7 @@ end
 --[[
     Safely execute a listener whether it be an array of functions or a single one
 ]]
-function LPFClasses.Events:ExecuteListener(object, event, args)
+function __LPF_CLASSES__.Events:ExecuteListener(object, event, args)
     if type(object[event]) == "function" then
         object[event](object, args)
     else
